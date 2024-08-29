@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<nav th:replace="~{layouts :: navbar}"></nav>
+<div class="container">
+    <form action="/products/save"  th:object="${products}" method="POST">
+        <div class="form-group">
+            <label for="productName">Product Name </label>
+            <input type="text" class="form-control" id="productName" name="productName" placeholder="Product Name" th:field="${products.name}">
+        </div>
+        <div class="form-group">
+            <label for="productDescription">Product Description</label>
+            <textarea class="form-control" id="productDescription" name="productDescription" rows="3" placeholder="Product Description" th:field="${products.description}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="availability">Availability</label>
+            <select class="form-control" id="availability" name="availability" th:field="${products.available}">
+                <option value="True">Available</option>
+                <option value="False">Not Available</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input type="url" class="form-control" id="imageUrl" name="imageUrl" placeholder="Image URL" th:field="${products.image}">
+        </div>
+        <div class="form-group">
+            <label for="productPrice">Price</label>
+            <input type="number" class="form-control" id="productPrice" name="productPrice" placeholder="Price" step="1" min="0" th:field="${products.price}">
+        </div>
+        <div class="form-group">
+            <label for="users">Select Users</label>
+            <select id="users" name="users" multiple="multiple" class="form-control">
+                <option th:each="user : ${allUsers}"
+                        th:value="${user.userId}"
+                        th:text="${user.name}">
+                </option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Product</button>
+    </form>
+</div>
+</body>
+</html>
