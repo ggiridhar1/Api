@@ -1,7 +1,7 @@
 package com.giridhar.projectmanagement.controller;
 
-import com.giridhar.projectmanagement.dataAxesObject.IproductRepo;
-import com.giridhar.projectmanagement.dataAxesObject.IuserRepo;
+import com.giridhar.projectmanagement.dataAxisObject.IproductRepo;
+import com.giridhar.projectmanagement.dataAxisObject.IuserRepo;
 import com.giridhar.projectmanagement.entity.Products;
 import com.giridhar.projectmanagement.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -31,14 +30,17 @@ public class ProductController {
     }
 
     @GetMapping("/new")
+    // To bind html and spring we use Model;
     public String displayForm(Model model){
         Products aProduct=new Products();
         List<Users> users =iuserRepo.findAll();
+        //Atrribute name should be same name as entity class name
         model.addAttribute("products",aProduct);
-        model.addAttribute("allUsers", users);
+        model.addAttribute("Users", users);
         return "product/new-project";
     }
 
+    //create products in database;
     @PostMapping("/save")
         public String createProduct(Products products, Model model){
         productRepo.save(products);

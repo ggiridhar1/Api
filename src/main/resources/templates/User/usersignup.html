@@ -13,6 +13,7 @@
 <body>
 <nav th:replace="layouts :: navbar"></nav>
 <div class="container">
+    <!-- To submit form to post url -->
     <form action="/users/save" th:object="${user}" method="POST">
         <div class="form-group">
             <label for="name">Name</label>

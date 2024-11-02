@@ -21,6 +21,7 @@ public class Products {
     @JoinTable(name = "product_user",
             joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name="userId"))
+    //relationship in database
     private List<Users> users;
 
     public Products() {

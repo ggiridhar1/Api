@@ -1,7 +1,7 @@
 package com.giridhar.projectmanagement.controller;
 
-import com.giridhar.projectmanagement.dataAxesObject.IproductRepo;
-import com.giridhar.projectmanagement.dataAxesObject.IuserRepo;
+import com.giridhar.projectmanagement.dataAxisObject.IproductRepo;
+import com.giridhar.projectmanagement.dataAxisObject.IuserRepo;
 import com.giridhar.projectmanagement.entity.Products;
 import com.giridhar.projectmanagement.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;

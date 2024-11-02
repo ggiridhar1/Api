@@ -1,4 +1,4 @@
-package com.giridhar.projectmanagement.dataAxesObject;
+package com.giridhar.projectmanagement.dataAxisObject;
 
 import com.giridhar.projectmanagement.entity.Users;
 import org.springframework.data.repository.CrudRepository;

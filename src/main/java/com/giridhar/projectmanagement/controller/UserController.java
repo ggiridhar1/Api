@@ -1,6 +1,6 @@
 package com.giridhar.projectmanagement.controller;
 
-import com.giridhar.projectmanagement.dataAxesObject.IuserRepo;
+import com.giridhar.projectmanagement.dataAxisObject.IuserRepo;
 import com.giridhar.projectmanagement.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +19,8 @@ public class UserController {
 
     @GetMapping
     public String displayUsers(Model model) {
-        List<Users> users=userRepo.findAll();
-        model.addAttribute("users", users);
+        List<Users> anUsers=userRepo.findAll();
+        model.addAttribute("users", anUsers);
         return "User/usersListingPage";
     }
 
