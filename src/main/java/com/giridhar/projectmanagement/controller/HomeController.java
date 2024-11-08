@@ -2,6 +2,7 @@ package com.giridhar.projectmanagement.controller;
 
 import com.giridhar.projectmanagement.dataAxisObject.IproductRepo;
 import com.giridhar.projectmanagement.dataAxisObject.IuserRepo;
+import com.giridhar.projectmanagement.dto.UserProduct;
 import com.giridhar.projectmanagement.entity.Products;
 import com.giridhar.projectmanagement.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,10 @@ public class HomeController {
 
     @GetMapping()
     public String displayHome(Model model) {
-        List<Users> users = iuserRepo.findAll();
+        List<UserProduct> usersproductcount = iuserRepo.userProducts();
         List<Products> products = productRepo.findAll();
         model.addAttribute("listproducts", products);
-        model.addAttribute("listusers", users);
+        model.addAttribute("listusers", usersproductcount);
         return "HomePage";
     }
 }

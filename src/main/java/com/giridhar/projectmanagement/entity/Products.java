@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Products {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "pro_seq")
     private long id;
     private String name;
     private double price;
@@ -18,9 +18,9 @@ public class Products {
     //one product has multiple users
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
             fetch = FetchType.LAZY)
-    @JoinTable(name = "product_user",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name="userId"))
+    @JoinTable(name="product_user",
+    joinColumns = @JoinColumn(name="product_id"),inverseJoinColumns = @JoinColumn(name = "user_id") )
+
     //relationship in database
     private List<Users> users;
 

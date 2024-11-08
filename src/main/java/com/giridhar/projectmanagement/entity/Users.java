@@ -8,7 +8,7 @@ import java.util.List;
 public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) //import
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq") //import
     private long userId;
 
     private String name;
@@ -17,9 +17,8 @@ public class Users {
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
     fetch = FetchType.LAZY)
-    @JoinTable(name = "product_user",
-            joinColumns = @JoinColumn(name = "userId"),
-            inverseJoinColumns = @JoinColumn(name="id"))//forgin key
+    @JoinTable(name="product_user",
+            joinColumns = @JoinColumn(name="user_id"),inverseJoinColumns = @JoinColumn(name = "product_id") )
     private List<Products> products;
 
     public Users() {

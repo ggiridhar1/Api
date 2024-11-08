@@ -39,19 +39,23 @@
         <tr>
             <th>Name</th>
             <th>Phone Number</th>
-            <th>Email</th>
+            <th>NO of Products</th>
         </tr>
         </thead>
         <tbody>
         <!-- auser is the temporary variable and users is the collection object -->
         <tr th:each="auser : ${listusers}">
-            <td th:text="${auser.name}"></td>
-            <td th:text="${auser.phoneNumber}"></td>
-            <td th:text="${auser.email}"></td>
+            <td th:text="${auser.Name}"></td>
+            <td th:text="${auser.PhoneNumber}"></td>
+            <td th:text="${auser.MappedProduct}"></td>
         </tr>
         </tbody>
     </table>
 </div>
+<div class="col-md-4">
+    <canvas id="myPieChart" height="50" width="50"></canvas>
+</div>
+<script type="text/javascript" th:src="@{/js/myChart.js}"></script>
 
 <!-- Bootstrap JS and dependencies -->
 <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvvV0FZ6AOvx8iTQm+I" crossorigin="anonymous"></script>-->

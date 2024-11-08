@@ -4,12 +4,14 @@ import com.giridhar.projectmanagement.dataAxisObject.IproductRepo;
 import com.giridhar.projectmanagement.dataAxisObject.IuserRepo;
 import com.giridhar.projectmanagement.entity.Products;
 import com.giridhar.projectmanagement.entity.Users;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -42,9 +44,11 @@ public class ProductController {
 
     //create products in database;
     @PostMapping("/save")
-        public String createProduct(Products products, Model model){
+    public String createProduct(Products products, Model model) {
+        // Save the product
         productRepo.save(products);
-        //use redirect to prevent duplicate submissions
+
+        // Use redirect to prevent duplicate submissions
         return "redirect:/products";
     }
 }
